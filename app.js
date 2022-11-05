@@ -1,7 +1,6 @@
 const playBtn = document.querySelector(".play");
 const pauseBtn = document.querySelector(".pause");
 const resetBtn = document.querySelector(".reset");
-console.log(playBtn)
 
 playBtn.addEventListener("click", start);
 pauseBtn.addEventListener("click", pause);
@@ -33,33 +32,33 @@ function timeToString(time) {
 }
 
 function showBtn(btnkey) {
-  const btnToShow = (btnkey) => ("play" ? playBtn : pauseBtn);
-  const btnToHide = (btnkey) => ("play" ? pauseBtn : playBtn);
+  const btnToShow = btnkey === ("play" ? playBtn : pauseBtn);
+  const btnToHide = btnkey === ("play" ? pauseBtn : playBtn);
   btnToShow.style.display = "block";
   btnToHide.style.display = "none";
 }
 
 function print(text) {
-  document.getElementById("display").innerHTML = text
+  document.getElementById("display").innerHTML = text;
 }
 
 function start() {
-  startTime = Date.now() = elapsedTime
-  timeInterval = setInterval(function printTime(){
-    elapsedTime = Date.now() - startTime
-    print(timeToString(elapsedTime))
-  },10)
-  showBtn('pause')
+  startTime = Date.now() - elapsedTime;
+  timeInterval = setInterval(function printTime() {
+    elapsedTime = Date.now() - startTime;
+    print(timeToString(elapsedTime));
+  }, 10);
+  showBtn("pause");
 }
 
 function pause() {
-  clearInterval(timeInterval)
-  showBtn('play')
+  clearInterval(timeInterval);
+  showBtn("play");
 }
 
 function reset() {
-  clearInterval(timeInterval)
-  print("00:00:00:00")
-  elapsedTime = 0
-  showBtn('play')
+  clearInterval(timeInterval);
+  print("00:00:00:00");
+  elapsedTime = 0;
+  showBtn("play");
 }
